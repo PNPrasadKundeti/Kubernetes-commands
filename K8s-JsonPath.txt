@@ -34,8 +34,11 @@ K get nodes -o=custom-columns=NODE: .metadata.name,CPU:.status.capacity.cpu
 K get nodes —sort-by= .metada.name
 K get nodes —sort-by= .status.capacity.cpu
 
+kubectl get nodes -o=jsonpath="{.items[*]['status.nodeInfo.osImage']}"
+
 
 kubectl get pv --sort-by=.spec.capacity.storage -o=custom-columns=NAME:.metadata.name,CAPACITY:.spec.capacity.storage
 kubectl get pv --sort-by=.spec.capacity.storage -o=custom-columns=NAME:.metadata.name,CAPACITY:.spec.capacity.storage
 
 K get deploy —sort-by=.metadata.name -o=custom-columns=DEPLOYMENT:.metadata.name,CONTAINER_IMAGE:.spec.template.spec.containers.image, READY_REPLICAS:.status.readyReplicas 
+
